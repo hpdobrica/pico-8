@@ -1,0 +1,98 @@
+[000000] codo_init
+[000000]   platform: Windows
+[000001]   Found config.txt
+[000001]   
+[000001]     01 window_size 0 0 // window width, height
+[000001]     02 screen_size 0 0 // screen width, height (stretched to window) 
+[000001]     03 show_fps 0 // Draw frames per second in the corner
+[000001]     04 windowed 1 // 1 to start up in windowed mode
+[000001]     05 window_position -1 -1 // x and y position of window (-1, -1 to let the window manager decide)
+[000001]     new window position: -1, -1
+[000001]     06 frameless 0 // 1 to use a window with no frame
+[000001]     07 fullscreen_method 1 // 0 maximized window (linux)  1 borderless desktop-sized window  2 hardware fullscreen (warning: erratic behaviour under some drivers)
+[000001]     08 blit_method 0  // 0 auto  1 software (slower but sometimes more reliable)  2 hardware (can do filtered scaling) 
+[000001]     09 foreground_sleep_ms 2 // number of milliseconds to sleep each frame. Try 10 to conserve battery power
+[000001]     10 background_sleep_ms 10 // number of milliseconds to sleep each frame when running in the background
+[000001]     11 sessions 1 // number of times program has been run
+[000001]     12 rmb_key 0 // 0 for none  226 for LALT
+[000001]     13 desktop_path 
+[000001]     14 read_controllers_in_background 0
+[000001]     15 sound_volume 256 // 0..256
+[000001]     16 music_volume 256 // 0..256
+[000001]     17 mix_buffer_size 1024
+[000001]     18 map_scancodes 
+[000001]     19 version 0.2.5g
+[000001]     20 volume 256
+[000001]     21 root_path C:/Users/hpdob/AppData/Roaming/pico-8/carts/
+[000001]     22 cdata_path C:/Users/hpdob/AppData/Roaming/pico-8/cdata/
+[000001]     23 joystick_index 0
+[000001]     24 button_keys 0 0 0 0 0 0 0 0 0 0 0 0 0 
+[000001]     25 live_notes 0
+[000001]     26 cursor_snap 0
+[000001]     27 gui_theme 0
+[000001]     28 screenshot_scale 3
+[000001]     29 gif_scale 3
+[000001]     30 gif_len 16
+[000001]     31 gif_reset_mode 0
+[000001]     32 host_framerate_control 1
+[000001]     33 splore_filter 0
+[000001]     34 tab_width 1
+[000001]     35 draw_tabs 0
+[000001]     36 record_activity_log 1
+[000001]     37 allow_function_keys 1
+[000001]     38 check_for_cart_updates 1
+[000001]     39 auto_hide_mouse_cursor 5
+[000001]     40 aggressive_backups 0
+[000001]     41 periodic_backups 20
+[000001]     42 transform_screen 0
+[000001]     43 gfx_grid_lines 0
+[000001]   
+[000002]   codo_system_init
+[000139]   Compiled against SDL version: 2.0.2
+[000139]   Linked against SDL version:   2.0.9
+[000139]   Current video driver: windows
+[000139]   codo_reset_timer
+[000139]   codo_gui_init
+[000139]   codo_keys_init
+[000139]   codo_text_init
+[000139]   codo_video_init
+[000139]   codo_mouse_init
+[000139]   codo_joystick_init
+[000149]   Reading controller mappings: C:/Users/hpdob/AppData/Roaming/pico-8/sdl_controllers.txt
+[000149]   searching for joysticks
+[000149]     found 1 joysticks
+[000149]     connecting joystick 0
+[000711]     Controller 0: Nintendo Switch Pro Controller
+[000711]      Number of Axes: 6
+[000711]      Number of Buttons: 15
+[000711]      Number of Balls: 0
+[000711]      Mapping: 030000007e0500000920000010026800,*,a:b0,b:b1,back:b4,dpdown:b12,dpleft:b13,dpright:b14,dpup:b11,guide:b5,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,start:b6,x:b2,y:b3,
+[000711]   ok
+[000711] ok
+[000740] codo_load_pod: C:/Program Files (x86)/PICO-8/pico8.dat ok 
+[000748] codo_set_screen 128 128 8 100
+[000748]  window size: 640 540
+[000984]   setting filter to nearest (screen_mode 0  back page width: 128)
+  renderer direct3d:
+   flags: 0x0000000E ( |  | )
+   texture formats (3): ARGB8888, YV12, IYUV
+   max texture size: 16384x16384
+[000988]  desktop size: 2560 1440
+[000988] ok
+[000991] codo_sound_init mix_buffer_size: 1024
+[000991] codo_sound_init
+[000991] SDL_INIT_AUDIO ok
+[001036] SDL_OpenAudio ok
+[001036]  freq:22050
+ channels:1
+[001036] Built-in audio drivers: 0 wasapi 1 directsound 2 winmm 3 disk 4 dummy
+[001037] Current audio driver: wasapi
+[001037] splore_init
+[001037] could not load favourites file: C:/Users/hpdob/AppData/Roaming/pico-8/favourites.txt
+[001041] connecting joystick 0
+[001041] Controller 0: Nintendo Switch Pro Controller
+[001041]  Number of Axes: 6
+[001041]  Number of Buttons: 15
+[001041]  Number of Balls: 0
+[001041]  Mapping: 030000007e0500000920000010026800,*,a:b0,b:b1,back:b4,dpdown:b12,dpleft:b13,dpright:b14,dpup:b11,guide:b5,leftshoulder:b9,leftstick:b7,lefttrigger:a4,leftx:a0,lefty:a1,rightshoulder:b10,rightstick:b8,righttrigger:a5,rightx:a2,righty:a3,start:b6,x:b2,y:b3,
+[012197] run_cart current_filename: C:/Users/hpdob/AppData/Roaming/pico-8/carts/tuts/shmup.p8 running_filename: tuts/shmup.p8 running_cart_lid: 
