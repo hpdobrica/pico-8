@@ -4,40 +4,46 @@ __lua__
 --main
 
 function _init()
-	starfield_generate()
+	mode_start()
 end
+
+
 
 function _update()
-	ship_update()
-	bullet_update()
-	starfield_update()
-
+	if modes[mode].update != nil then
+		modes[mode].update()
+	end
 end
+
 
 function _draw()
 	cls()
-	starfield_draw()
-	ship_draw()
-	bullet_draw()
-	ui_draw()
+	if modes[mode].draw != nil then
+		modes[mode].draw()
+	end
+
 end
+
+
 
 
 -->8
 --ship
 
-ship = {
-	x=64,
-	y=64,
-	dx=0,
-	dy=0,
-	sprite=2,
-	engine={
-		sp={4,5,4,6,4},
-		i=0
+
+function ship_init()
+	ship = {
+		x=64,
+		y=64,
+		dx=0,
+		dy=0,
+		sprite=2,
+		engine={
+			sp={4,5,4,6,4},
+			i=0
+		}
 	}
-	
-}
+end
 
 function animate_engine()
 		
@@ -92,18 +98,17 @@ end
 -->8
 --bullet
 
+function bullets_init()
+	bullets = {}
 
-bullets = {}
-
-muzzle_size=0
-muzzle = {
-	current=0,
-	maximal=3
-}
-
-bullet_tpl = {
-	dy=-4
-}
+	muzzle_size=0
+	muzzle = {
+		current=0,
+		maximal=3
+	}
+	
+	bullet_dy=-4
+end
 
 function bullet_update()
 	
@@ -111,7 +116,7 @@ function bullet_update()
 		local b={
 			x=ship.x,
 			y=ship.y-5,
-			dy=bullet_tpl.dy
+			dy=bullet_dy
 		}
 		add(bullets,b)
 		muzzle.current = muzzle.maximal
@@ -148,13 +153,17 @@ function bullet_draw()
 	end
 end
 -->8
--- ui
+-- game ui
 
-score=0
-max_lives=4
-lives=3
 
-function ui_draw()
+function game_ui_init()
+	score=0
+	max_lives=3
+	lives=3
+end
+
+
+function game_ui_draw()
 	for i=1,max_lives do
 		if i<=lives then
 			spr(32,9*i,1)
@@ -168,22 +177,24 @@ end
 -->8
 --starfield
 
-stars_n=64
-stars_speed=6
-stars={}
 
-function starfield_generate()
+
+function starfield_init()
+	stars_n=100
+	stars={}
+	
  for i=1,stars_n do
  	add(stars,{
  		x=flr(rnd(128)),
- 		y=flr(rnd(128))
+ 		y=flr(rnd(128)),
+ 		s=rnd(2)+0.5
  	})
  end
 end
 
 function starfield_update()
 	for i=1,#stars do
- 	stars[i].y=stars[i].y+stars_speed
+ 	stars[i].y=stars[i].y+stars[i].s
  	if stars[i].y>128 then
  		stars[i].x=flr(rnd(128))
  		stars[i].y=-1
@@ -193,8 +204,94 @@ end
 
 function starfield_draw()
 	 for i=1,#stars do
-	 	pset(stars[i].x,stars[i].y)
+	 	local s=stars[i]
+	 	local c=6
+	 	if s.s < 1 then
+	 		c=1
+	 	elseif s.s <1.5 then
+	 		c=13
+	 	end
+	 	
+	 	if s.s < 2 then
+	 		pset(s.x,s.y,c)
+	 	else
+	 		line(s.x,s.y,s.x,s.y-3,c)
+	 	end
 	 end
+end
+
+
+-->8
+--modes
+
+modes = {
+	start = {},
+	game = {},
+	over = {}
+}
+
+-- start
+function mode_start()
+	mode="start"
+	start_i=0
+	start_c={5,5,5,5,5,5,5,5,6,6,7,7,6,6,5,5}
+end
+
+modes.start.update = function()
+	start_i+=1
+	if start_i>#start_c then
+		start_i = 1
+	end
+	if btnp(4) or btnp(5) then
+		mode_game()
+	end
+end
+
+modes.start.draw = function()
+	print("shmup!",55,35,12)
+	print("press any key to start",23,70,start_c[start_i])
+end
+
+
+
+-- game
+function mode_game()
+	mode="game"
+	starfield_init()
+	ship_init()
+	bullets_init()
+	game_ui_init()
+end
+
+modes.game.update = function()
+	ship_update()
+	bullet_update()
+	starfield_update()
+	
+end
+
+modes.game.draw=function()
+	starfield_draw()
+	ship_draw()
+	bullet_draw()
+	game_ui_draw()
+end
+
+-- over
+function mode_over()
+	mode="over"
+end
+
+modes.over.update = function()
+	if btnp(4) or btnp(5) then
+		mode_game()
+	end
+end
+
+modes.over.draw = function()
+	cls(8)
+	print("game over!",55,35,12)
+	print("press any key to continue",23,70,7)
 end
 
 
