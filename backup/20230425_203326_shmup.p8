@@ -116,8 +116,7 @@ function bullet_update()
 		local b={
 			x=ship.x,
 			y=ship.y-5,
-			dy=bullet_dy,
-			spr=16
+			dy=bullet_dy
 		}
 		add(bullets,b)
 		muzzle.current = muzzle.maximal
@@ -143,7 +142,10 @@ function bullet_update()
 end
 
 function bullet_draw()
-	draw_sprites(bullets)
+	for i=1,#bullets do
+		local b=bullets[i]
+		spr(16,b.x,b.y)
+	end
 	
 	if muzzle.current > 1 then 
 		circfill(ship.x+4,ship.y-4,
