@@ -15,7 +15,6 @@ end
 function _update()
 	update_joka()
 	update_camera()
-	update_chars()
 end
 
 function _draw()
@@ -25,8 +24,7 @@ function _draw()
 	draw_chars()
 	--debug
 	--is_solid("full",joka,0,0,{},true)
-	--print(joka.x.." "..joka.y,camx,camy,1)
-	print(chars[1].script.goto_party,camx,camy)
+
 	
 end
 -->8
@@ -51,7 +49,6 @@ function init_joka()
 		sx=false,
 		sy=false,
 		speed=3,
-		touching=nil
 	}
 end
 
@@ -73,20 +70,6 @@ function update_joka()
  if btn(⬇️) then
   //j.sy = true  -- flip sprite on y
   dy+=j.speed  -- dy=dy+1
- end
- if btnp(❎) then
- 	if joka.touching != nil then
- 		
- 		c=joka.touching
- 		c.text=c.script.texts[c.script.text_id]
- 		if c.script.texts[c.script.text_id]==nil then
- 			c.text=""
- 			c.script.goto_party=true
- 		else
- 			c.script.text_id+=1
- 		end
- 	end
- 	
  end
  
  -- there's no map-tile with
@@ -110,27 +93,7 @@ function draw_joka()
 	--sspr(8,0,16,24,joka.x,joka.y,16,24)
 	spr(j.s, j.x, j.y,flr((j.w+j.ox)/8)+1,flr((j.h+j.oy)/8)+1,j.sx,j.sy)
 end
-
-
-
 -->8
---util
-
-function hcenter(s,x,y)
-  -- screen center minus the
-  -- string length times the 
-  -- pixels in a char's width,
-  -- cut in half
-  return x-#s*2
-end
-
-function vcenter(s,x,y)
-  -- screen center minus the
-  -- string height in pixels,
-  -- cut in half
-  return 61
-end
-
 -- camera
 
 function update_camera()
@@ -186,18 +149,17 @@ function is_solid(opt,obj,ox,oy,flags,debug)
   for v in all(flags) do
    if(fget(mget(c.x/8,c.y/8),v))return true
   end
- 	char=get_touching_char(c.x,c.y)
- 	if char != nil then
- 		joka.touching=char
+ 	-- collision with chars?
+ 	if is_touching_char(c.x,c.y) then
  		return true
  	end
  end
  return false
 end
 -->8
---chars
+--zivuljke
 
-function init_char(name,s,x,y,script)
+function init_char(name,s,x,y)
  return {
  	name=name,
 		s=s,
@@ -208,28 +170,16 @@ function init_char(name,s,x,y,script)
 		x=x,
 		y=y,
 		sx=false,
-		sy=false,
-		text="",
-		script = script,
+		sy=false
 	}
 end
 
-function new_script(texts,path)
-	return {
-		texts=texts,
-		text_id=1,
-		goto_party=false,
-		path=path,
-		path_id=1
-	}
-end
+
 
 function init_chars()
 	chars={
-		init_char("dora",68,145,105,
-			script_dora
-		),
 		init_char("julija",64,160,220),
+		init_char("dora",68,145,105),
 		init_char("belka",66,250,155),
 		init_char("prca",72,162,15),
 		init_char("lisa",70,70,60),
@@ -238,90 +188,28 @@ function init_chars()
 		init_char("bila mica",78,10,245),
 		init_char("mezimica",106,217,210),
 		init_char("sarka",108,73,125),
-		init_char("smokvica",110,217,20),
+		init_char("smokvica",110,235,7),
 
 	}
-end
-
-function update_chars()
-	for i=1,#chars do
-		local c=chars[i]
-		if c.script == nil then
-			return nil
-		end
-		local s=c.script
-		if not s.goto_party then
-			return nil
-		end
-		
-		local p=s.path[s.path_id]
-		
-		if p==nil then
-			s.goto_party=false
-			return nil
-		end
-
-		if c.x>p.x then
-			c.x-=1
-		elseif c.x<p.x then
-			c.x+=1
-		end
-		if c.y>p.y then
-			c.y-=1
-		elseif c.y<p.y then
-			c.y+=1
-		end
-		
-		if c.x==p.x and c.y==p.y then
-			s.path_id+=1
-		end
-
-	end
 end
 
 function draw_chars()
 	for i = 1,#chars do
 		local c=chars[i]
 		spr(c.s, c.x, c.y,flr((c.w+c.ox)/8)+1,flr((c.h+c.oy)/8)+1,c.sx,c.sy)
-		if c.text != "" then
-			print(c.text, 
-									c.x-(#c.text*2)+c.w,
-									c.y-7,
-									16)
-		end
 	end
 
 end
 
-function get_touching_char(x,y)
+function is_touching_char(x,y)
 	for i=1,#chars do
 		local c=chars[i]
 		if x >= c.x and x <= c.x + c.w and y >= c.y and y <= c.y + c.h then
-    --return nil
-    return c
-    
+    return true
   end
 	end
-	return nil
+	return false
 end
--->8
---scripts
-
-
-script_dora=new_script(
-	{"srecan rodjendan",
-		"vidimo se na terasi"},
-		{
-				{
-					x=145,y=105
-				},
-				{
-					x=112,y=105
-				},
-		}
-)
-
-
 __gfx__
 00000000bbbb0000000bbbbb0000000000000000555555554444444477777777dddddddddd111111111111dddddddddddd111111111111dddddddddd11111111
 00000000bbb044444440bbbb0000000000000000555555554444444477777777dddddddddd111111111111dddddddddddd111111111111dddddddddd11111111

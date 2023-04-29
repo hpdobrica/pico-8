@@ -23,10 +23,10 @@ function _draw()
 	map()
 	draw_joka()
 	draw_chars()
+	print(joka.x.." "..joka.y,camx,camy,1)
 	--debug
 	--is_solid("full",joka,0,0,{},true)
-	--print(joka.x.." "..joka.y,camx,camy,1)
-	print(chars[1].script.goto_party,camx,camy)
+
 	
 end
 -->8
@@ -81,7 +81,7 @@ function update_joka()
  		c.text=c.script.texts[c.script.text_id]
  		if c.script.texts[c.script.text_id]==nil then
  			c.text=""
- 			c.script.goto_party=true
+ 			c.goto_party=true
  		else
  			c.script.text_id+=1
  		end
@@ -246,20 +246,12 @@ end
 function update_chars()
 	for i=1,#chars do
 		local c=chars[i]
-		if c.script == nil then
-			return nil
-		end
 		local s=c.script
 		if not s.goto_party then
 			return nil
 		end
 		
 		local p=s.path[s.path_id]
-		
-		if p==nil then
-			s.goto_party=false
-			return nil
-		end
 
 		if c.x>p.x then
 			c.x-=1
