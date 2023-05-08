@@ -32,8 +32,8 @@ function _draw()
 	--debug
 	--is_solid("full",joka,0,0,{},true)
 	--is_solid("full",chars[1],0,0,{},true)
-	--print(joka.x.." "..joka.y,camx,camy,1)
-	print(chars[1].col.w,camx,camy)
+	print(joka.x.." "..joka.y,camx,camy,1)
+	--print(chars[1].col.w,camx,camy)
 	--print(phase,camx,camy,1)
 end
 -->8
@@ -248,7 +248,11 @@ function init_char(
 	w,h,
 	sx,sy,
 	script,
-	col)
+	col,
+	frame_color)
+	if frame_color == nil then
+		frame_color=14
+	end
  return {
  	name=name,
 		s=sarr[1],
@@ -264,36 +268,11 @@ function init_char(
 		text="",
 		script = script,
 		ready_to_blow=false,
-		col=col
+		col=col,
+		frame_color=frame_color
 	}
 end
 
-
-function init_dobrica(script)
-	return{
-		s=3,
-		anim_s={3,174},
-		w=15,
-		h=23,
-		ox=0,
-		oy=0,
-		col= {
-			w=10,--15
-			h=10,--15
-			ox=3,--0
-			oy=13,--8
-		},
-		x=175,
-		y=60,
-		sx=true,
-		sy=false,
-		speed=3,
-		text="",
-		script = script,
-		ready_to_blow=false
-	}
-
-end
 
 
 
@@ -320,7 +299,8 @@ function init_chars()
 				h=10,--15
 				ox=3,--0
 				oy=13,--8
-			}
+			},
+			12
 			),
 		init_char("dora",
 			{68,100},
@@ -333,7 +313,9 @@ function init_chars()
 			162,15,
 			15,15,
 			false,false,
-			script_prca),
+			script_prca,
+			nil,
+			12),
 		init_char("julija",
 			{64,96},
 			160,220,
@@ -443,6 +425,20 @@ function draw_chars()
 		local c=chars[i]
 		spr(c.s, c.x, c.y,flr((c.w+c.ox)/8)+1,flr((c.h+c.oy)/8)+1,c.sx,c.sy)
 		if c.text != "" then
+			
+			rectfill(
+						c.x-(#c.text*2)+c.w-3,
+						c.y-7-3,
+						c.x+(#c.text*2)+c.w,
+						c.y,
+						7)
+						rect(
+						c.x-(#c.text*2)+c.w-3,
+						c.y-7-3,
+						c.x+(#c.text*2)+c.w,
+						c.y,
+						c.frame_color)
+			
 			print(c.text, 
 				c.x-(#c.text*2)+c.w,
 				c.y-7,
@@ -508,7 +504,7 @@ script_dora=new_script(
 			x=151,y=282
 		},
 		{
-			x=130,y=330
+			x=130,y=331
 		},
 	}
 )
@@ -737,13 +733,16 @@ script_sarka=new_script(
 		"sva vrata otvore!"},
 	{
 		{
-			x=76,y=99
+			x=76,y=102
 		},
 		{
-			x=94,y=99
+			x=79,y=102
 		},
 		{
-			x=112,y=120
+			x=100,y=102
+		},
+		{
+			x=112,y=135
 		},
 		{
 			x=154,y=285
@@ -755,7 +754,7 @@ script_sarka=new_script(
 script_dobrica=new_script(
 	{
 		"srecan rodjendan",
-		"joko!",
+		"joko <3",
 		"skupi nas sve,",
 		"pa zamisli zelju!",
 		"vidimo se na terasi!"
