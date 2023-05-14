@@ -44,10 +44,7 @@ function start_game()
 	
 	wind={}
 	
-	addwind(32,64,64,24,{
-	"hello world",
-	"this is line 2"
-	})
+	
 	
 end
 
@@ -206,6 +203,11 @@ function trig_bump(tle,destx,desty)
 		--door
 		sfx(62)
 		mset(destx,desty,1)
+	elseif tle==6 then
+		addwind(32,64,64,24,{
+			"welcome to the world",
+			"of porklike"
+			})
 	end
 end
 -->8
@@ -241,6 +243,13 @@ function drawind()
 			wy+=6
 		end
 	end
+end
+
+function showmsg(txt,dur)
+	addwind(32,64,64,24,{
+	"hello world",
+	"this is line 2"
+	})
 end
 
 
