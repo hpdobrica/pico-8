@@ -7,24 +7,20 @@ collideSystem = world.system({Position, Velocity, Size, Collidable}, function(en
   -- if flag 1 based on velocity then wall
   if entity[Velocity].x > 0 then
     if fget(mget((x + w) / 8, y / 8), 1) then
-      log(1)
       entity[Velocity].x = 0
     end
   elseif entity[Velocity].x < 0 then
     if fget(mget(x / 8, y / 8), 1) then
-      log(2)
       entity[Velocity].x = 0
     end
   end
 
   if entity[Velocity].y > 0 then
     if fget(mget(x / 8, (y + h) / 8), 1) then
-      log(3)
       entity[Velocity].y = 0
     end
   elseif entity[Velocity].y < 0 then
     if fget(mget(x / 8, y / 8), 1) then
-      log(4)
       entity[Velocity].y = 0
     end
   end
@@ -65,7 +61,6 @@ function checkCollisions(entity, dir, flags)
           if dir[1] < 0 then
             offsetX = nearestTx - (x + ox)+8
           end
-          log("offsetx "..offsetX.." offsety "..offsetY, true)
           return true, {
             x = offsetX,
             y = offsetY
@@ -93,7 +88,7 @@ newCollideSystem = world.system({Position, Velocity, Size, Collidable}, function
   if collist then
     -- entity[Velocity].y = offset.y
     entity[Velocity].y = 0
-    entity[Position].y += offset.y
+    entity[Position].y = entity[Position].y + offset.y
   end
 
   -- Then check horizontal collision
@@ -101,7 +96,7 @@ newCollideSystem = world.system({Position, Velocity, Size, Collidable}, function
   if collist then
     -- entity[Velocity].x = offset.x
     entity[Velocity].x = 0
-    entity[Position].x += offset.x
+    entity[Position].x = entity[Position].x + offset.x
   end
 
 end)
