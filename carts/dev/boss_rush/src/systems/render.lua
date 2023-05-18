@@ -12,6 +12,10 @@ function simpleDirToFlip(dir)
       return true, false
     elseif dir == "ldown" then
       return true, true
+    elseif dir == "up" then
+        return false, false
+    elseif dir == "down" then
+        return false, true 
     end
   
     return false, false
