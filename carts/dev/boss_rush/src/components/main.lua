@@ -20,7 +20,7 @@ end
 
 Lifetime = world.component({ duration=0 })
 
-Action = world.component({ action=nil, delay=0, cooldown=0, state="init" })
+Action = world.component({ action=nil, delay=0, cooldown=0, state="init", type=nil })
 
 -- actions
 Attack = world.component({ damage=0, range=0, sprite=0, duration=0 })

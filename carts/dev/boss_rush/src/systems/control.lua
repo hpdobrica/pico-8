@@ -47,8 +47,15 @@ controlSystem = world.system({ Controllable, Velocity }, function(entity, dt)
     end
 
     if btnp(5) then -- X
+
+        if entity[Action] and entity[Action].type == "Attack" then
+          log("already attacking")
+          return
+        end
+        log("adding attack action")
         entity = entity + Action({
             action = Attack({ damage=1, range=1, angle=entity[Direction].angle, duration=10 }),
+            type = "Attack",
             delay = 0.5,
             cooldown = 5
         })

@@ -39,6 +39,8 @@ function _init()
   init_game()
 end
 
+recordT = 300
+
 function _update()
   
   local tick = time()
@@ -58,6 +60,12 @@ function _update()
 
   lastTick = time()
   
+  if recordT >= -2 then
+    recordT = recordT - 1
+    if recordT == 0 then
+      extcmd("video")
+    end
+  end
   
 end
 

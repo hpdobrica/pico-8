@@ -43,17 +43,36 @@ attackEnt = nil
 attackSystem = world.system({ Position, Attack }, function(entity, dt)
         log("attack create")
 
-    angle = entity[Direction].angle
-    dx = cos(angle) * 4
-    dy = -sin(angle) * 4
-    log(dx .. " " .. dy,true)
+    local angle = entity[Direction].angle
+    local dx = cos(angle) * 4
+    local dy = -sin(angle) * 4
+    
+    if dy ~= 0 then
+        dx = 0
+    end
+
+    if dx > 0 then
+        dx = dx + entity[Size].w
+    end
+    if dy > 0 then
+        dy = dy + entity[Size].h
+    end
+
+    attackAngle = atan2(dx, dy)
+    if dx == 0 and dy == 0 then
+        attackAngle = 0
+    end
+
     attackEnt = world.entity({},
         Position({ x=entity[Position].x+dx, y=entity[Position].y + dy }),
-        Size({w=8,h=8, ox=0, oy=0}),
+        Direction({ angle=attackAngle }),
+        Size({w=4,h=8, ox=0, oy=0}),
         Velocity({ x=0, y=0, speed=0 }),
         Renderable({ sprite=49 }),
         Lifetime({ duration=5 })
     )
+    attackEnt[Direction].sprite[0.75] = 50
+    attackEnt[Direction].sprite[0.25] = 50
     entity = entity - Attack
 
     
