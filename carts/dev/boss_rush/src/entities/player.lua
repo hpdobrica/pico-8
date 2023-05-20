@@ -6,13 +6,23 @@ local player = world.entity({},
     Collidable(),
     Controllable(),
     Rigidbody(),
-    Direction({ simple = "right", sprite={lup=17, rup=17, ldown=33, rdown=33} })
+    Direction({ angle = 0, step_lock=8, sprite={} })
 )
 
-function drawPlayerColliders()
-    pset(player[Position].x+player[Size].ox, player[Position].y+player[Size].oy+player[Size].h, 8)
-    pset(player[Position].x+player[Size].ox+player[Size].w, player[Position].y+player[Size].oy+player[Size].h, 8)
-    pset(player[Position].x+player[Size].ox, player[Position].y+player[Size].oy, 8)
-    pset(player[Position].x+player[Size].ox+player[Size].w, player[Position].y+player[Size].oy, 8)
+player[Direction].sprite[0.125] = 33 -- rdown
+player[Direction].sprite[0.375] = 33 -- ldown
+player[Direction].sprite[0.625] = 17 -- lup
+player[Direction].sprite[0.875] = 17 -- rup
+player[Direction].sprite[0.75] = 17 -- up 
+player[Direction].sprite[0.25] = 33 -- down
+
+
+function debugPlayer()
+    -- colliders
+    -- pset(player[Position].x+player[Size].ox, player[Position].y+player[Size].oy+player[Size].h, 8)
+    -- pset(player[Position].x+player[Size].ox+player[Size].w, player[Position].y+player[Size].oy+player[Size].h, 8)
+    -- pset(player[Position].x+player[Size].ox, player[Position].y+player[Size].oy, 8)
+    -- pset(player[Position].x+player[Size].ox+player[Size].w, player[Position].y+player[Size].oy, 8)
+    print(player[Velocity].y)
     
 end

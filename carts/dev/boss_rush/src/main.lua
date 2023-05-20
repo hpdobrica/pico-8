@@ -29,7 +29,7 @@ end)
 
 
 local rigidbodySystem = world.system({ Rigidbody, Velocity }, function(entity, dt)
-  entity[Velocity].y = entity[Velocity].y + 2 * dt
+  entity[Velocity].y = min(entity[Velocity].y + 2 * dt,15)
 end)
 
 local lastTick = time()
@@ -45,11 +45,13 @@ function _update()
   local dt = 1
   world.update()
 
+  lifetimeSystem(dt)
   controlSystem(dt)
 
   rigidbodySystem(dt)
 
   actionSystem(dt)
+  attackSystem(dt)
   newCollideSystem(dt)
   moveSystem(dt)
 
@@ -64,7 +66,7 @@ function _draw()
   map()
   
   renderSystem()
-  -- drawPlayerColliders()
+  debugPlayer()
 end
 
 

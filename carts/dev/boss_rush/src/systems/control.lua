@@ -1,52 +1,44 @@
 
+local tmpX = {}
 
 controlSystem = world.system({ Controllable, Velocity }, function(entity, dt)
 
     local setDirection = false
-    local initialDirection = nil
+    local initialAngle = 0
+
+    if tmpX[entity] == nil then
+      tmpX[entity] = entity[Velocity].x
+    end
     if entity[Direction] then
       setDirection = true
-      initialDirection = entity[Direction].simple
     end
 
     local speed = entity[Velocity].speed * dt
     if btn(0) then -- left
       entity[Velocity].x = -speed
-      if setDirection then
-        entity[Direction].simple = "left"
-      end
+      tmpX[entity] = -speed
     elseif btn(1) then -- right
       entity[Velocity].x = speed
-      if setDirection then
-        entity[Direction].simple = "right"
-      end
+      tmpX[entity] = speed
     else
       entity[Velocity].x = 0
     end
     
-    
+    local fakeVelocityY = 0
     if btn(2) then -- up
-    --   entity[Velocity].y = -speed
-        if setDirection then
-          log(entity[Direction].simple)
-          local prefix = sub(entity[Direction].simple,1, 1)
-          entity[Direction].simple = prefix.."up"
-        end
+      fakeVelocityY = -speed
     elseif btn(3) then -- down
-    --   entity[Velocity].y = speed
-        if setDirection then
-          local prefix = sub(entity[Direction].simple,1, 1)
-          entity[Direction].simple = prefix.."down"
-        end
+      fakeVelocityY = speed
     else
-      entity[Velocity].y = 0
-      if setDirection then
-        local dir = entity[Direction].simple
-        if dir == "lup" or dir == "ldown" then
-          entity[Direction].simple = "left"
-        elseif dir == "rup" or dir == "rdown" then
-          entity[Direction].simple = "right"
-        end
+      fakeVelocityY = 0
+
+    end
+    
+    if setDirection then
+      if tmpX[entity] == 0 and fakeVelocityY == 0 then
+        entity[Direction].angle = 0
+      else
+        entity[Direction].angle = atan2(tmpX[entity], -fakeVelocityY)
       end
     end
   
@@ -56,9 +48,9 @@ controlSystem = world.system({ Controllable, Velocity }, function(entity, dt)
 
     if btnp(5) then -- X
         entity = entity + Action({
-            action = Attack({ damage=1, range=1, angle=0 }),
-            delay = 0.1,
-            cooldown = 0.5
+            action = Attack({ damage=1, range=1, angle=entity[Direction].angle, duration=10 }),
+            delay = 0.5,
+            cooldown = 5
         })
         -- Action = world.component({ action=nil, delay=0, cooldown=0 })
         -- SwordAttack = world.component({ damage=0, range=0, angle=0 })
