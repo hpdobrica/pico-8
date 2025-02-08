@@ -3,24 +3,47 @@ adding attack action
 action system
 action system
 action system
-action system
 1
 attack create
+entities0
+damage system dmg36 40 4 8
+damage system entity60 103 16 16
+damage system entity30 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg36 40 4 8
+damage system entity60 103 16 16
+damage system entity30 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg36 40 4 8
+damage system entity60 103 16 16
+damage system entity30 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg36 40 4 8
+damage system entity60 103 16 16
+damage system entity30 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg36 40 4 8
+damage system entity60 103 16 16
+damage system entity30 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg36 40 4 8
+damage system entity60 103 16 16
+damage system entity30 40 1 6
 lifetime
 lifetime delete
 action system
@@ -30,24 +53,47 @@ adding attack action
 action system
 action system
 action system
-action system
 1
 attack create
+entities0
+damage system dmg48 31.1716 4 8
+damage system entity60 103 16 16
+damage system entity48 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg48 31.1716 4 8
+damage system entity60 103 16 16
+damage system entity48 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg48 31.1716 4 8
+damage system entity60 103 16 16
+damage system entity48 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg48 31.1716 4 8
+damage system entity60 103 16 16
+damage system entity48 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg48 31.1716 4 8
+damage system entity60 103 16 16
+damage system entity48 40 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg48 31.1716 4 8
+damage system entity60 103 16 16
+damage system entity48 40 1 6
 lifetime
 lifetime delete
 action system
@@ -57,24 +103,47 @@ adding attack action
 action system
 action system
 action system
-action system
 1
 attack create
+entities0
+damage system dmg69 84 4 8
+damage system entity60 103 16 16
+damage system entity75 84 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 84 4 8
+damage system entity60 103 16 16
+damage system entity75 88 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 84 4 8
+damage system entity60 103 16 16
+damage system entity75 94 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 84 4 8
+damage system entity60 103 16 16
+damage system entity75 102 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 84 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 84 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 lifetime delete
 action system
@@ -84,24 +153,48 @@ adding attack action
 action system
 action system
 action system
-action system
 1
 attack create
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
+lifetime
+already attacking
+action system
+added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
-lifetime
-action system
-added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 lifetime delete
 action system
@@ -111,24 +204,47 @@ adding attack action
 action system
 action system
 action system
-action system
 1
 attack create
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg69 112 4 8
+damage system entity60 103 16 16
+damage system entity75 112 1 6
 lifetime
 lifetime delete
 action system
@@ -138,24 +254,147 @@ adding attack action
 action system
 action system
 action system
+1
+attack create
+entities0
+damage system dmg87 112 4 8
+damage system entity60 103 16 16
+damage system entity81 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg87 112 4 8
+damage system entity60 103 16 16
+damage system entity81 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg87 112 4 8
+damage system entity60 103 16 16
+damage system entity81 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg87 112 4 8
+damage system entity60 103 16 16
+damage system entity81 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg87 112 4 8
+damage system entity60 103 16 16
+damage system entity81 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg87 112 4 8
+damage system entity60 103 16 16
+damage system entity81 112 1 6
+lifetime
+lifetime delete
+action system
+added action: 1
+removing action: 1
+adding attack action
+action system
+action system
 action system
 1
 attack create
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
 lifetime
 action system
 added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
+lifetime
+lifetime delete
+action system
+added action: 1
+removing action: 1
+adding attack action
+action system
+action system
+action system
+1
+attack create
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
+lifetime
+action system
+added action: 1
+entities0
+damage system dmg66 112 4 8
+damage system entity60 103 16 16
+damage system entity72 112 1 6
 lifetime
 lifetime delete
 action system

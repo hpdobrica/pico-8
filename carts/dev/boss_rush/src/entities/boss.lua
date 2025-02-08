@@ -6,5 +6,6 @@ local boss = world.entity({},
   Renderable({ sprite=224}), 
   Collidable(),
   -- Controllable(),
-  Rigidbody()
+  Rigidbody(),
+  Health({ max=3, current=3 })
 )
